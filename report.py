@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
-from streamlit_vizzu import Config, Data, VizzuChart
+# from streamlit_vizzu import Config, Data, VizzuChart
+from streamlit.components.v1 import html
+from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
 
 # Load the Zomato dataset
 df = pd.read_csv("zomato_dataset.csv")
@@ -22,3 +24,6 @@ if st.checkbox("Swap"):
 
 # Show the chart in the app
 chart.show()
+
+
+
