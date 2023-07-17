@@ -1,3 +1,5 @@
 ipyvizzu>=0.15.0
 ipyvizzu-story
 streamlit>=1.18.0
+-e .
+st-pages
