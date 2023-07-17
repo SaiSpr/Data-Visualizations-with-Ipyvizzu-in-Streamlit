@@ -8,7 +8,7 @@ from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
 df = pd.read_csv("zomato_dataset.csv")
 
 # Create a VizzuChart object
-chart = VizzuChart()
+chart = Chart()
 
 # Add the dataset to the chart
 data = Data()
