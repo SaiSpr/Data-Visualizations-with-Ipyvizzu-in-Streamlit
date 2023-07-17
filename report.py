@@ -26,6 +26,6 @@ if st.checkbox("Swap"):
 # chart.show()
 # display Chart
  
-html(CHART, width=650, height=370)
+html(chart, width=650, height=370)
 
 
