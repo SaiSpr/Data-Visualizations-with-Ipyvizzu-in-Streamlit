@@ -4,28 +4,86 @@ import streamlit as st
 from streamlit.components.v1 import html
 from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
 
-# Load the Zomato dataset
-df = pd.read_csv("zomato_dataset.csv")
+# # Load the Zomato dataset
+# df = pd.read_csv("zomato_dataset.csv")
 
-# Create a VizzuChart object
-chart = Chart()
+# # Create a VizzuChart object
+# chart = Chart()
 
-# Add the dataset to the chart
-data = Data()
-data.add_data_frame(df)
-chart.animate(data)
+# # Add the dataset to the chart
+# data = Data()
+# data.add_data_frame(df)
+# chart.animate(data)
 
-# Configure the chart
-chart.animate(Config({"x": "Cuisine", "y": "Votes", "title": "Cuisine Popularity"}))
+# # Configure the chart
+# chart.animate(Config({"x": "Cuisine", "y": "Votes", "title": "Cuisine Popularity"}))
 
-# Add the swap checkbox
-if st.checkbox("Swap"):
-    chart.animate(Config({"y": "Cuisine", "x": "Votes", "title": "Votes Distribution"}))
+# # Add the swap checkbox
+# if st.checkbox("Swap"):
+#     chart.animate(Config({"y": "Cuisine", "x": "Votes", "title": "Votes Distribution"}))
 
-# # Show the chart in the app
-# chart.show()
-# display Chart
+# # # Show the chart in the app
+# # chart.show()
+# # display Chart
  
-html(chart, width=650, height=370)
+# html(chart, width=650, height=370)
 
-
+# import streamlit, pandas and ipyvizzu
+ 
+from streamlit.components.v1 import html
+import pandas as pd
+from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
+ 
+ 
+def create_chart():
+    # initialize Chart
+ 
+    chart = Chart(
+        width="640px", height="360px", display=DisplayTarget.MANUAL
+    )
+ 
+    # create and add data to Chart
+ 
+    data = Data()
+    data_frame = pd.read_csv(
+        "https://ipyvizzu.vizzuhq.com/0.15/showcases/titanic/titanic.csv"
+    )
+    data.add_data_frame(data_frame)
+ 
+    chart.animate(data)
+ 
+    # add config to Chart
+ 
+    chart.animate(
+        Config(
+            {
+                "x": "Count",
+                "y": "Sex",
+                "label": "Count",
+                "title": "Passengers of the Titanic",
+            }
+        )
+    )
+    chart.animate(
+        Config(
+            {
+                "x": ["Count", "Survived"],
+                "label": ["Count", "Survived"],
+                "color": "Survived",
+            }
+        )
+    )
+    chart.animate(Config({"x": "Count", "y": ["Sex", "Survived"]}))
+ 
+    # add style to Chart
+ 
+    chart.animate(Style({"title": {"fontSize": 35}}))
+ 
+    # return generated html code
+ 
+    return chart._repr_html_()
+ 
+ 
+# generate Chart's html code
+ 
+CHART = create_chart()
