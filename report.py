@@ -87,3 +87,7 @@ def create_chart():
 # generate Chart's html code
  
 CHART = create_chart()
+
+# display Chart
+ 
+html(CHART, width=650, height=370)
