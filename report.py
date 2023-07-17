@@ -22,8 +22,10 @@ chart.animate(Config({"x": "Cuisine", "y": "Votes", "title": "Cuisine Popularity
 if st.checkbox("Swap"):
     chart.animate(Config({"y": "Cuisine", "x": "Votes", "title": "Votes Distribution"}))
 
-# Show the chart in the app
-chart.show()
-
+# # Show the chart in the app
+# chart.show()
+# display Chart
+ 
+html(CHART, width=650, height=370)
 
 
