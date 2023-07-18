@@ -8,20 +8,20 @@ from ipyvizzustory import Story  # or
  
 # create data and initialize Story with the created data
  
-data = Data()
-data.add_series("Foo", ["Alice", "Bob", "Ted"])
-data.add_series("Bar", [15, 32, 12])
-data.add_series("Baz", [5, 3, 2])
+# data = Data()
+# data.add_series("Foo", ["Alice", "Bob", "Ted"])
+# data.add_series("Bar", [15, 32, 12])
+# data.add_series("Baz", [5, 3, 2])
  
 # you can also add data with pandas
  
-# import pandas as pd
-#
-# data = Data()
-# df = pd.read_csv(
-#     "https://ipyvizzu-story.vizzuhq.com/0.7/assets/data/data.csv"
-# )
-# data.add_data_frame(df)
+import pandas as pd
+
+data = Data()
+df = pd.read_csv(
+    "zomato_dataset.csv"
+)
+data.add_data_frame(df)
  
 story = Story(data=data)
  
@@ -30,13 +30,13 @@ story = Story(data=data)
  
 slide1 = Slide(
     Step(
-        Config({"x": "Foo", "y": "Bar"}),
+        Config({"x": "Cuisine", "y": "Votes", "title": "Cuisine Popularity"}),
     )
 )
 story.add_slide(slide1)
  
 slide2 = Slide(
-    Step(Config({"color": "Foo", "x": "Baz", "geometry": "circle"}))
+    Step(Config({"color": "Cuisine", "x": "Votes", "geometry": "circle"}))
 )
 story.add_slide(slide2)
  
