@@ -89,45 +89,45 @@ from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
 # CHART = create_chart()
 #########################################################
 
-	from ipyvizzu import Data, Config
+from ipyvizzu import Data, Config
 
-	from ipyvizzustory import Story, Slide, Step
-
-	 
-
-	 
-
-	# Create data object
-
-	data = Data()
-
-	data.add_series("Foo", ["Alice", "Bob", "Ted"])
-
-	data.add_series("Bar", [15, 32, 12])
-
-	data.add_series("Baz", [5, 3, 2])
+from ipyvizzustory import Story, Slide, Step
 
 	 
 
 	 
 
-	# Create story object, add data to it
+# Create data object
 
-	story = Story(data=data)
+data = Data()
+
+data.add_series("Foo", ["Alice", "Bob", "Ted"])
+
+data.add_series("Bar", [15, 32, 12])
+
+data.add_series("Baz", [5, 3, 2])
 
 	 
 
 	 
 
-	# Each slide here is a page in the final interactive story
+# Create story object, add data to it
 
-	# Add the first slide
+story = Story(data=data)
 
-	slide1 = Slide(
+	 
 
-	    Step(
+	 
 
-	        Config({"x": "Foo", "y": "Bar"}),
+# Each slide here is a page in the final interactive story
+
+# Add the first slide
+
+slide1 = Slide(
+
+	Step(
+
+	Config({"x": "Foo", "y": "Bar"}),
 
 	    )
 
@@ -135,17 +135,17 @@ from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
 
 	# Add the slide to the story
 
-	story.add_slide(slide1)
+story.add_slide(slide1)
 
 	 
 
-	# Create the second slide
+# Create the second slide
 
-	# Configs provided here are changes to the visualization
+# Configs provided here are changes to the visualization
 
-	# created in the previous Step
+# created in the previous Step
 
-	slide2 = Slide(
+slide2 = Slide(
 
 	    Step(
 
@@ -155,15 +155,14 @@ from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
 
 	)
 
-	story.add_slide(slide2)
+story.add_slide(slide2)
 
 	 
 
 	 
+# Play the created story!
 
-	# Play the created story!
-
-	story.play()
+story.play()
 
 # display Chart
  
