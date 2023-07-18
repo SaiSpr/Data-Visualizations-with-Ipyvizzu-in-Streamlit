@@ -19,7 +19,7 @@ import pandas as pd
 
 data = Data()
 df = pd.read_csv(
-    "zomato_dataset.csv"
+    "zomato_mini.csv"
 )
 data.add_data_frame(df)
  
