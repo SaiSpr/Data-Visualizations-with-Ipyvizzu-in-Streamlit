@@ -164,6 +164,6 @@ story.add_slide(slide2)
 
 story.play()
 
-# display Chart
+# # display Chart
  
-html(CHART, width=650, height=370)
+# html(CHART, width=650, height=370)
