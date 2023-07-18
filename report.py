@@ -30,7 +30,7 @@ story = Story(data=data)
  
 slide1 = Slide(
     Step(
-        Config({"x": "Cuisine", "y": "Votes", "title": "Cuisine Popularity"}),
+        Config({"x": "Cuisine", "y": "Votes"}),
     )
 )
 story.add_slide(slide1)
