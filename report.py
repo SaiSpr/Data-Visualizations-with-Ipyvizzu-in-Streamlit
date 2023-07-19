@@ -30,13 +30,13 @@ story = Story(data=data)
  
 slide1 = Slide(
     Step(
-        Config({"x": "Cuisine ", "y": "Votes"}),
+        Config({"x": "Cuisine ", "y": "Prices"}),
     )
 )
 story.add_slide(slide1)
  
 slide2 = Slide(
-    Step(Config({"color": "Cuisine ", "x": "Votes", "geometry": "circle"}))
+    Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"}))
 )
 story.add_slide(slide2)
  
