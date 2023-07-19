@@ -21,7 +21,7 @@ data = Data()
 df = pd.read_csv(
     "ultra_dataset.csv"
 )
-data.add_data_frame(df)
+data.add_data_frame(df[:500)
  
 story = Story(data=data)
  
