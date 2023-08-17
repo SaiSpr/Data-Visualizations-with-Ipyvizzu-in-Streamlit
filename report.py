@@ -5,14 +5,6 @@ from ipyvizzustory import Story  # or
  
 # from ipyvizzustory.env.st.story import Story
  
- 
-# create data and initialize Story with the created data
- 
-# data = Data()
-# data.add_series("Foo", ["Alice", "Bob", "Ted"])
-# data.add_series("Bar", [15, 32, 12])
-# data.add_series("Baz", [5, 3, 2])
- 
 # you can also add data with pandas
  
 import pandas as pd
@@ -25,20 +17,27 @@ data.add_data_frame(df[:500])
  
 story = Story(data=data)
  
- 
+
+# Slide 1: Introduction
+slide1 = Slide(Step(
+    Config({"title": "Exploring Food Delivery Insights"}),
+))
+story.add_slide(slide1)
+
+
 # create Slides and Steps and add them to the Story
  
-slide1 = Slide(
+slide2 = Slide(
     Step(
         Config({"x": "Cuisine ", "y": "Prices"}),
     )
 )
-story.add_slide(slide1)
+story.add_slide(slide2)
  
-slide2 = Slide(
+slide3 = Slide(
     Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"}))
 )
-story.add_slide(slide2)
+story.add_slide(slide3)
  
  
 # note: in Streamlit,
