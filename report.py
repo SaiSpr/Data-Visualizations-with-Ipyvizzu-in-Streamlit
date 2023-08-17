@@ -25,21 +25,44 @@ slide1 = Slide(Step(
 story.add_slide(slide1)
 
 
-# create Slides and Steps and add them to the Story
+# # create Slides and Steps and add them to the Story
  
-slide2 = Slide(
-    Step(
-        Config({"x": "Cuisine ", "y": "Prices"}),
-    )
-)
+# slide2 = Slide(
+#     Step(
+#         Config({"x": "Cuisine ", "y": "Prices"}),
+#     )
+# )
+# story.add_slide(slide2)
+ 
+# slide3 = Slide(
+#     Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"}))
+# )
+# story.add_slide(slide3)
+ 
+# Slide 2: Restaurant Ratings and Delivery Ratings
+slide2 = Slide(Step(
+    Config({
+        "title": "Ratings Overview",
+        "channels": {"x": {"set": ["Restaurant Rating", "Delivery Rating"]}},
+    }),
+))
 story.add_slide(slide2)
- 
-slide3 = Slide(
-    Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"}))
-)
+
+# Slide 3: Cuisine Preferences
+slide3 = Slide(Step(
+    Config({
+        "title": "Preferred Cuisines",
+        "channels": {"x": {"set": "Cuisine"}},
+    }),
+))
 story.add_slide(slide3)
- 
- 
+
+
+
+
+
+
+
 # note: in Streamlit,
 # you need to set the width and height in pixels as int
  
