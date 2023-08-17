@@ -40,22 +40,43 @@ story.add_slide(slide1)
 # story.add_slide(slide3)
  
 # Slide 2: Restaurant Ratings and Delivery Ratings
-slide2 = Slide(Step(
-    Config({
-        "title": "Ratings Overview",
-        "channels": {"x": {"set": ["Dining Rating", "Delivery Rating"]}},
-    }),
-))
+slide2 = Slide(
+    Step(
+        Config(
+            {
+                "channels": {
+                    "y": {
+                        "set": ["Restaurant Name"],
+                    },
+                    "x": {"set": ["Dining Rating", "Delivery Rating"]},
+                    "color": "Delivery Rating",
+                },
+                "title": "Ratings Overview",
+            }
+        ),
+    )
+)
+# Add the slide to the story
 story.add_slide(slide2)
 
-# Slide 3: Cuisine Preferences
-slide3 = Slide(Step(
-    Config({
-        "title": "Preferred Cuisines",
-        "channels": {"x": {"set": "Cuisine"}},
-    }),
-))
-story.add_slide(slide3)
+# slide2 = Slide(Step(
+#     Config({
+#         "title": "Ratings Overview",
+#         "channels": {"x": {"set": ["Dining Rating", "Delivery Rating"]},  "y": {
+#                         "set": ["Restaurant Name"],
+#                     },},
+#     }),
+# ))
+# story.add_slide(slide2)
+
+# # Slide 3: Cuisine Preferences
+# slide3 = Slide(Step(
+#     Config({
+#         "title": "Preferred Cuisines",
+#         "channels": {"x": {"set": "Cuisine"}},
+#     }),
+# ))
+# story.add_slide(slide3)
 
 
 
