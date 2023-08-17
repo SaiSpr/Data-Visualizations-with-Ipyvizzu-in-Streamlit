@@ -43,7 +43,7 @@ story.add_slide(slide1)
 slide2 = Slide(Step(
     Config({
         "title": "Ratings Overview",
-        "channels": {"x": {"set": ["Restaurant Rating", "Delivery Rating"]}},
+        "channels": {"x": {"set": ["Restaurant Name", "Delivery Rating"]}},
     }),
 ))
 story.add_slide(slide2)
