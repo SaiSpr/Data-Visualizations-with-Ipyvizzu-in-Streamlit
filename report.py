@@ -69,14 +69,14 @@ story.add_slide(slide2)
 # ))
 # story.add_slide(slide2)
 
-# # Slide 3: Cuisine Preferences
-# slide3 = Slide(Step(
-#     Config({
-#         "title": "Preferred Cuisines",
-#         "channels": {"x": {"set": "Cuisine"}},
-#     }),
-# ))
-# story.add_slide(slide3)
+# Slide 3: Cuisine Preferences
+slide3 = Slide(Step(
+    Config({
+        "title": "Preferred Cuisines",
+        "channels": {"x": {"set": "Cuisine"}},
+    }),
+))
+story.add_slide(slide3)
 
 
 
