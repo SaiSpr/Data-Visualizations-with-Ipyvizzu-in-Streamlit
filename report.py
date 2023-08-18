@@ -70,6 +70,35 @@ story.add_slide(slide4)
 
 
 
+# Group the data by dish name and sum up the quantities ordered
+best_selling_dishes = data.groupby('Item Name')['Votes'].sum().reset_index()
+
+# Sort the dishes in descending order based on quantities sold
+best_selling_dishes = best_selling_dishes.sort_values(by='Votes', ascending=False)
+
+# Select the top 10 best-selling dishes
+top_n = 10
+top_dishes = best_selling_dishes.head(top_n)
+# Create a slide
+slide4 = Slide(
+    Step(
+        Data.filter(
+            f"""
+            {' || '.join([f"record['Item Name'] === '{dish}'" for dish in top_dishes['Item Name']])}
+            """
+        ),
+        Config(
+            {
+                "title": "Top {} Best-Selling Dishes".format(top_n),
+                # Configure other visualization settings here
+            }
+        ),
+    )
+)
+
+# Add the slide to the story
+story.add_slide(slide4)
+
 
 
 
