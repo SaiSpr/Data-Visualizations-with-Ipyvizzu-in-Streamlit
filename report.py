@@ -27,17 +27,7 @@ story.add_slide(slide1)
 
 # # create Slides and Steps and add them to the Story
  
-# slide2 = Slide(
-#     Step(
-#         Config({"x": "Cuisine ", "y": "Prices"}),
-#     )
-# )
-# story.add_slide(slide2)
- 
-# slide3 = Slide(
-#     Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"}))
-# )
-# story.add_slide(slide3)
+
  
 # Slide 2: Restaurant Ratings and Delivery Ratings
 slide2 = Slide(
@@ -59,24 +49,17 @@ slide2 = Slide(
 # Add the slide to the story
 story.add_slide(slide2)
 
-# slide2 = Slide(Step(
-#     Config({
-#         "title": "Ratings Overview",
-#         "channels": {"x": {"set": ["Dining Rating", "Delivery Rating"]},  "y": {
-#                         "set": ["Restaurant Name"],
-#                     },},
-#     }),
-# ))
-# story.add_slide(slide2)
-
-# Slide 3: Cuisine Preferences
-slide3 = Slide(Step(
-    Config({
-        "title": "Preferred Cuisines",
-        "channels": {"x": {"set": "Cuisine"}},
-    }),
-))
+slide3 = Slide(
+    Step(
+        Config({"x": "Cuisine ", "y": "Prices"}),
+    )
+)
 story.add_slide(slide3)
+ 
+slide4 = Slide(
+    Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"}))
+)
+story.add_slide(slide4)
 
 
 
