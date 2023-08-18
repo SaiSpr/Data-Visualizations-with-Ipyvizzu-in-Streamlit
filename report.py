@@ -51,15 +51,17 @@ story.add_slide(slide2)
 
 slide3 = Slide(
     Step(
-        Config({"x": "Cuisine ", "y": "Prices"}),
-        "title": "Delivery Ratings",
+        Config({"x": "Cuisine ", "y": "Prices"},
+              "title": "Delivery Ratings",}),
+        
     )
 )
 story.add_slide(slide3)
  
 slide4 = Slide(
-    Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"}),
-        "title": "Dining Ratings",)
+    Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle"},
+               "title": "Dining Ratings"},),
+        )
 )
 story.add_slide(slide4)
 
