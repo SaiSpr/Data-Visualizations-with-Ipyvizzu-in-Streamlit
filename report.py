@@ -1,44 +1,35 @@
-from ipyvizzu import Data, Config
-from ipyvizzustory import Slide, Step
+# from ipyvizzu import Data, Config
+# from ipyvizzustory import Slide, Step
  
-from ipyvizzustory import Story  # or
+# from ipyvizzustory import Story  # or
  
 # from ipyvizzustory.env.st.story import Story
  
 
 
+import pandas as pd
+from ipyvizzu import Data, Config, Style
 
-	import pandas as pd
-
-	 
-
-	from ipyvizzu import Data, Config, Style
-
-	from ipyvizzustory import Story, Slide, Step
+from ipyvizzustory import Story, Slide, Step
 
 	 
 
 	 
 
-	# Create data object, read csv to data frame and add data frame to data object
+# Create data object, read csv to data frame and add data frame to data object
 
-	data = Data()
+data = Data()
 
-	df = pd.read_csv(
+df = pd.read_csv(
+	"https://ipyvizzu-story.vizzuhq.com/0.7/examples/trumptwitter/trumptwitter.csv",
+)
 
-	    "https://ipyvizzu-story.vizzuhq.com/0.7/examples/trumptwitter/trumptwitter.csv",
-
-	)
-
-	data.add_data_frame(df)
+data.add_data_frame(df)
 
 	 
+# Set the style of the charts in the story
 
-	 
-
-	# Set the style of the charts in the story
-
-	style = Style(
+style = Style(
 
 	    {
 
@@ -89,18 +80,13 @@ from ipyvizzustory import Story  # or
 	)
 
 	 
+# Create story object, add data and style settings to it
+story = Story(data=data, style=style)
 
-	# Create story object, add data and style settings to it
+# Set the size of the HTML element
+# that appears within the notebook
 
-	story = Story(data=data, style=style)
-
-	 
-
-	# Set the size of the HTML element
-
-	# that appears within the notebook
-
-	story.set_size("100%", "400px")
+story.set_size("100%", "400px")
 
 	 
 
@@ -108,7 +94,7 @@ from ipyvizzustory import Story  # or
 
 	# when the user hovers the mouse over a chart element
 
-	story.set_feature("tooltip", True)
+story.set_feature("tooltip", True)
 
 	 
 
@@ -116,9 +102,9 @@ from ipyvizzustory import Story  # or
 
 	# Add the first slide
 
-	slide1 = Slide(
+slide1 = Slide(
 
-	    Step(
+	Step(
 
 	        Data.filter(
 
@@ -126,7 +112,7 @@ from ipyvizzustory import Story  # or
 
 	        ),
 
-	        Config(
+	Config(
 
 	            {
 
@@ -156,10 +142,10 @@ from ipyvizzustory import Story  # or
 
 	# Add the slide to the story
 
-	story.add_slide(slide1)
+story.add_slide(slide1)
 
 
-	slide2 = Slide(
+slide2 = Slide(
 
 	    Step(
 
@@ -183,11 +169,11 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide2)
+story.add_slide(slide2)
 
 	 
 
-	slide3 = Slide(
+slide3 = Slide(
 
 	    Step(
 
@@ -217,13 +203,13 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide3)
+story.add_slide(slide3)
 
 	 
 
-	slide4 = Slide(
+slide4 = Slide(
 
-	    Step(
+	Step(
 
 	        Data.filter(
 
@@ -255,11 +241,11 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide4)
+story.add_slide(slide4)
 
 	 
 
-	slide5 = Slide(
+slide5 = Slide(
 
 	    Step(
 
@@ -279,13 +265,13 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide5)
+story.add_slide(slide5)
 
 	 
 
-	slide6 = Slide()
+slide6 = Slide()
 
-	slide6.add_step(
+slide6.add_step(
 
 	    Step(
 
@@ -295,7 +281,7 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	slide6.add_step(
+slide6.add_step(
 
 	    Step(
 
@@ -313,11 +299,11 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide6)
+story.add_slide(slide6)
 
 	 
 
-	slide7 = Slide(
+slide7 = Slide(
 
 	    Step(
 
@@ -337,14 +323,13 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide7)
+story.add_slide(slide7)
 
 	 
 	 
+slide12 = Slide()
 
-	slide12 = Slide()
-
-	slide12.add_step(
+slide12.add_step(
 
 	    Step(
 
@@ -364,7 +349,7 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	slide8.add_step(
+slide8.add_step(
 
 	    Step(
 
@@ -380,7 +365,7 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	slide8.add_step(
+slide8.add_step(
 
 	    Step(
 
@@ -422,11 +407,11 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide8)
+story.add_slide(slide8)
 
 	 
 
-	slide9 = Slide(
+slide9 = Slide(
 
 	    Step(
 
@@ -438,13 +423,13 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide9)
+story.add_slide(slide9)
 
 	 
 
-	slide10 = Slide()
+slide10 = Slide()
 
-	slide10.add_step(
+slide10.add_step(
 
 	    Step(
 
@@ -462,7 +447,7 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	slide10.add_step(
+slide10.add_step(
 
 	    Step(
 
@@ -504,7 +489,7 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	slide10.add_step(
+slide10.add_step(
 
 	    Step(
 
@@ -524,12 +509,12 @@ from ipyvizzustory import Story  # or
 
 	)
 
-	story.add_slide(slide10)
+story.add_slide(slide10)
 	 
 
-	# Play the created story!
+# Play the created story!
 
-	story.play()
+story.play()
 
 # note: in Streamlit,
 # you need to set the width and height in pixels as int
