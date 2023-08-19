@@ -5,102 +5,531 @@ from ipyvizzustory import Story  # or
  
 # from ipyvizzustory.env.st.story import Story
  
-# you can also add data with pandas
- 
-import pandas as pd
-
-data = Data()
-df = pd.read_csv(
-    "ultra_dataset.csv"
-)
-data.add_data_frame(df[:500])
- 
-story = Story(data=data)
- 
-
-# Slide 1: Introduction
-slide1 = Slide(Step(
-    Config({"title": "Exploring Food Delivery Insights"}),
-))
-story.add_slide(slide1)
-
-
-# # create Slides and Steps and add them to the Story
- 
-
- 
-# Slide 2: Restaurant Ratings and Delivery Ratings
-slide2 = Slide(
-    Step(
-        Config(
-            {
-                "channels": {
-                    "y": {
-                        "set": ["Restaurant Name"],
-                    },
-                    "x": {"set": ["Dining Rating", "Delivery Rating"]},
-                    "color": "Delivery Rating",
-                },
-                "title": "Ratings Overview",
-            }
-        ),
-    )
-)
-# Add the slide to the story
-story.add_slide(slide2)
-
-slide3 = Slide(
-    Step(
-        Config({"x": "Cuisine ", "y": "Prices",
-               "title": "Delivery Ratings",},
-              ),
-        
-    )
-)
-story.add_slide(slide3)
- 
-slide4 = Slide(
-    Step(Config({"color": "Cuisine ", "x": "Dining Votes", "geometry": "circle",
-                "title": "Dining Ratings",},
-               ),
-        )
-)
-story.add_slide(slide4)
 
 
 
+	import pandas as pd
 
-# Group the data by dish name and sum up the quantities ordered
-best_selling_dishes = data.groupby('Item Name')['Votes'].sum().reset_index()
+	 
 
-# Sort the dishes in descending order based on quantities sold
-best_selling_dishes = best_selling_dishes.sort_values(by='Votes', ascending=False)
+	from ipyvizzu import Data, Config, Style
 
-# Select the top 10 best-selling dishes
-top_n = 10
-top_dishes = best_selling_dishes.head(top_n)
-# Create a slide
-slide4 = Slide(
-    Step(
-        Data.filter(
-            f"""
-            {' || '.join([f"record['Item Name'] === '{dish}'" for dish in top_dishes['Item Name']])}
-            """
-        ),
-        Config(
-            {
-                "title": "Top {} Best-Selling Dishes".format(top_n),
-                # Configure other visualization settings here
-            }
-        ),
-    )
-)
+	from ipyvizzustory import Story, Slide, Step
 
-# Add the slide to the story
-story.add_slide(slide4)
+	 
+
+	 
+
+	# Create data object, read csv to data frame and add data frame to data object
+
+	data = Data()
+
+	df = pd.read_csv(
+
+	    "https://ipyvizzu-story.vizzuhq.com/0.7/examples/trumptwitter/trumptwitter.csv",
+
+	)
+
+	data.add_data_frame(df)
+
+	 
+
+	 
+
+	# Set the style of the charts in the story
+
+	style = Style(
+
+	    {
+
+	        "tooltip": {"fontSize": "22px"},
+
+	        "title": {"paddingTop": "1.2em", "fontSize": "2.5em"},
+
+	        "legend": {"label": {"fontSize": "1.8em"}, "width": "16em"},
+
+	        "logo": {"width": "6em"},
+
+	        "plot": {
+
+	            "marker": {"label": {"fontSize": "1.5em"}},
+
+	            "yAxis": {
+
+	                "label": {
+
+	                    "fontSize": "1.5em",
+
+	                },
+
+	                "title": {"color": "#ffffff00"},
+
+	                "interlacing": {"color": "#ffffff00"},
+
+	            },
+
+	            "xAxis": {
+
+	                "label": {
+
+	                    "fontSize": "1.6em",
+
+	                    "paddingTop": "1em",
+
+	                },
+
+	                "title": {"fontSize": "1.4em", "paddingTop": "2.5em"},
+
+	            },
+
+	        },
+
+	    }
+
+	)
+
+	 
+
+	# Create story object, add data and style settings to it
+
+	story = Story(data=data, style=style)
+
+	 
+
+	# Set the size of the HTML element
+
+	# that appears within the notebook
+
+	story.set_size("100%", "400px")
+
+	 
+
+	# Switch on the tooltip that appears
+
+	# when the user hovers the mouse over a chart element
+
+	story.set_feature("tooltip", True)
+
+	 
+
+	# Each slide here is a page in the final interactive story
+
+	# Add the first slide
+
+	slide1 = Slide(
+
+	    Step(
+
+	        Data.filter(
+
+	            "record.Firsttweet === 'Yes' && record.Dummy === 'No'"
+
+	        ),
+
+	        Config(
+
+	            {
+
+	                "channels": {
+
+	                    "y": {
+
+	                        "set": ["tweets"],
+
+	                    },
+
+	                    "x": {"set": ["Period", "year", "month"]},
+
+	                    "color": "Period",
+
+	                },
+
+	                "title": "Trump started tweeting in May '09",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	# Add the slide to the story
+
+	story.add_slide(slide1)
 
 
+	slide2 = Slide(
 
+	    Step(
+
+	        Data.filter(
+
+	            "record.Period === 'New to Twitter' && record.Dummy === 'No'"
+
+	        ),
+
+	        Config(
+
+	            {
+
+	                "title": "In the first two years he wasn't very active",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide2)
+
+	 
+
+	slide3 = Slide(
+
+	    Step(
+
+	        Data.filter(
+
+	            """
+
+	            (record.Period === 'New to Twitter' || record.Period === 'Businessman')
+
+	            && record.Dummy === 'No'
+
+	            """
+
+	        ),
+
+	        Config(
+
+	            {
+
+	                "title": "Then he got hooked on",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide3)
+
+	 
+
+	slide4 = Slide(
+
+	    Step(
+
+	        Data.filter(
+
+	            """
+
+	            (record.Period === 'New to Twitter' || 
+
+	            record.Period === 'Businessman' || 
+
+	            record.Period === 'Nominee')
+
+	            && record.Dummy === 'No'
+
+	            """
+
+	        ),
+
+	        Config(
+
+	            {
+
+	                "title": "Interesting trend after becoming a presidential nominee",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide4)
+
+	 
+
+	slide5 = Slide(
+
+	    Step(
+
+	        Data.filter("record.Dummy === 'No'"),
+
+	        Config(
+
+	            {
+
+	                "title": "And after he became President",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide5)
+
+	 
+
+	slide6 = Slide()
+
+	slide6.add_step(
+
+	    Step(
+
+	        Config({"geometry": "area", "align": "center"}),
+
+	    )
+
+	)
+
+	slide6.add_step(
+
+	    Step(
+
+	        Config(
+
+	            {
+
+	                "title": "All of Trump's tweets until May 2020",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide6)
+
+	 
+
+	slide7 = Slide(
+
+	    Step(
+
+	        Config(
+
+	            {
+
+	                "y": "retweetcount",
+
+	                "title": "And the number of times these were retweeted",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide7)
+
+	 
+	 
+
+	slide12 = Slide()
+
+	slide12.add_step(
+
+	    Step(
+
+	        Config(
+
+	            {
+
+	                "align": "center",
+
+	                "title": "",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	slide8.add_step(
+
+	    Step(
+
+	        Config({"y": "tweets", "color": None, "legend": "lightness"}),
+
+	        Style(
+
+	            {"plot": {"marker": {"colorPalette": "null"}}},
+
+	        ),
+
+	    )
+
+	)
+
+	slide8.add_step(
+
+	    Step(
+
+	        Config(
+
+	            {
+
+	                "y": ["tweets", "Tool"],
+
+	                "color": "Tool",
+
+	                "title": "Tools Trump Used to Tweet",
+
+	                "legend": "color",
+
+	            }
+
+	        ),
+
+	        Style(
+
+	            {
+
+	                "plot": {
+
+	                    "marker": {
+
+	                        "colorPalette": "#597696FF #ED2828FF #26EC87FF #29B9BFFF "
+
+	                    }
+
+	                }
+
+	            },
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide8)
+
+	 
+
+	slide9 = Slide(
+
+	    Step(
+
+	        Config({"split": True, "align": "none"}),
+
+	        Style({"plot": {"yAxis": {"label": {"color": "#ffffff00"}}}}),
+
+	    )
+
+	)
+
+	story.add_slide(slide9)
+
+	 
+
+	slide10 = Slide()
+
+	slide10.add_step(
+
+	    Step(
+
+	        Config(
+
+	            {
+
+	                "geometry": "rectangle",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	slide10.add_step(
+
+	    Step(
+
+	        Config(
+
+	            {
+
+	                "x": ["tweets", "year", "month"],
+
+	                "y": "Tool",
+
+	                "geometry": "rectangle",
+
+	                "split": False,
+
+	                "align": "none",
+
+	            }
+
+	        ),
+
+	        Style(
+
+	            {
+
+	                "plot": {
+
+	                    "xAxis": {"title": {"color": "#ffffff00"}},
+
+	                    "yAxis": {"label": {"color": "#999999ff"}},
+
+	                }
+
+	            },
+
+	        ),
+
+	    )
+
+	)
+
+	slide10.add_step(
+
+	    Step(
+
+	        Config(
+
+	            {
+
+	                "x": "tweets",
+
+	                "label": "tweets",
+
+	            }
+
+	        ),
+
+	    )
+
+	)
+
+	story.add_slide(slide10)
+	 
+
+	# Play the created story!
+
+	story.play()
 
 # note: in Streamlit,
 # you need to set the width and height in pixels as int
