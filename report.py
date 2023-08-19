@@ -86,11 +86,10 @@ story = Story(data=data, style=style)
 # Set the size of the HTML element
 # that appears within the notebook
 
-story.set_size("100%", "400px")
 
 	 
 
-	# Switch on the tooltip that appears
+# Switch on the tooltip that appears
 
 	# when the user hovers the mouse over a chart element
 
