@@ -326,9 +326,9 @@ story.add_slide(slide7)
 
 	 
 	 
-slide12 = Slide()
+slide8 = Slide()
 
-slide12.add_step(
+slide8.add_step(
 
 	    Step(
 
