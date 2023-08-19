@@ -513,7 +513,7 @@ story.add_slide(slide10)
 
 # Play the created story!
 
-story.play()
+
 
 # note: in Streamlit,
 # you need to set the width and height in pixels as int
