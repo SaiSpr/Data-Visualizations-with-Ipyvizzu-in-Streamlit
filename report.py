@@ -518,7 +518,7 @@ story.add_slide(slide10)
 # note: in Streamlit,
 # you need to set the width and height in pixels as int
  
-story.set_size(width=800, height=480)
+story.set_size(width=1000, height=680)
  
  
 # you can export the Story into a html file
